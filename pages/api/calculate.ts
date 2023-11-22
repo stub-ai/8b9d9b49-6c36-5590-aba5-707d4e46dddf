@@ -2,12 +2,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  message: string
+  sum: number
 }
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ message: 'Hello World' })
+  const { num1, num2 } = req.query;
+  const sum = Number(num1) + Number(num2);
+  res.status(200).json({ sum });
 }
